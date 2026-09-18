@@ -1,23 +1,46 @@
-import React from "react";
-import { SiGmail } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
 // import { FaGithub } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { IoMailOutline } from "react-icons/io5";
-import Button from "./Button";
+import { FaGithub } from "react-icons/fa";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaRegCopyright } from "react-icons/fa";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Footer() {
+  useEffect(() => {
+    gsap.fromTo(
+      ".footer-box",
+      {
+        opacity: 0,
+        y: 30,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".footer-section",
+          start: "top 60%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+  }, []);
   return (
     <div>
-      <div className="w-full h-fit p-4 flex justify-between gap-4">
+      <div className="w-full h-fit px-2 py-4 md:p-4 flex justify-between gap-4 footer-section">
         {/* Overall Design */}
         <div>
           <div className="flex">
             <div className="flex flex-col gap-2 px-4">
               <p className="text-green-400 font-poppins font-semibold tracking-wide">
-                // PROJECTS
+                // CONTACT
               </p>
               <p className="font-poppins text-2xl font-bold tracking-wider">
                 Let's Connect
@@ -26,14 +49,14 @@ function Footer() {
           </div>
           <div className="px-4 mt-6">
             <div>
-              <p className="font-poppins whitespace-nowrap font-medium tracking-wider text-sm text-gray-400">
+              <p className="font-poppins md:whitespace-nowrap font-medium tracking-wider text-sm text-gray-400">
                 Have a project in mind or just want to say hi? <br />
                 I'd love to hear from you!
               </p>
             </div>
-            <div className="mt-4 flex gap-4">
+            <div className="mt-4 flex flex-col md:flex-row gap-4">
               {/* Email */}
-              <div className="w-60 h-fit px-6 py-4 cursor-pointer transition-all duration-300 hover:-translate-y-2 flex items-center gap-3 bg-[#0F1415] border border-white/10 rounded-xl ">
+              <div className="footer-box w-full md:w-60 h-fit px-6 py-4 cursor-pointer flex items-center gap-3 bg-[#0F1415] border border-white/10 rounded-xl ">
                 {/* logo */}
                 <div className="text-cyan-500 ">
                   <MdEmail size={30} />
@@ -51,7 +74,7 @@ function Footer() {
                 </div>
               </div>
               {/* LinkedIn */}
-              <div className="w-60 h-fit px-6 py-4 cursor-pointer transition-all duration-300 hover:-translate-y-2 flex items-center gap-3 bg-[#0F1415] border border-white/10 rounded-xl ">
+              <div className="footer-box w-full md:w-60 h-fit px-6 py-4 cursor-pointer flex items-center gap-3 bg-[#0F1415] border border-white/10 rounded-xl ">
                 {/* logo */}
                 <div className="text-blue-500 ">
                   <FaLinkedin size={30} />
@@ -69,7 +92,7 @@ function Footer() {
                 </div>
               </div>
               {/* Github */}
-              <div className="w-60 h-fit cursor-pointer transition-all duration-300 hover:-translate-y-2 px-6 py-4 flex items-center gap-3 bg-[#0F1415] border border-white/10 rounded-xl ">
+              <div className="footer-box w-full md:w-60 h-fit cursor-pointer px-6 py-4 flex items-center gap-3 bg-[#0F1415] border border-white/10 rounded-xl ">
                 {/* logo */}
                 <div className="text-white ">
                   <FaGithub size={30} />
@@ -90,7 +113,7 @@ function Footer() {
           </div>
         </div>
         {/* Terminal Card */}
-        <div className="w-full h-fit cursor-pointer ml-4 transition-all duration-300 hover:scale-105 hover:-translate-y-2">
+        <div className="w-full hidden md:inline-block h-fit cursor-pointer ml-4 transition-all duration-300 hover:scale-105 hover:-translate-y-2">
           <div className="w-full max-w-md bg-[#0B0F10] border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,255,170,0.08)]">
             {/* Terminal Header */}
             <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
@@ -132,13 +155,13 @@ function Footer() {
         </div>
       </div>
       {/* footer */}
-      <div className="bg-[#050708] w-full mt-16 text-white font-poppins font-medium flex justify-between items-center py-4 px-16 h-fit border-t border-[#1F2937]">
+      <div className="bg-[#050708] w-full mt-16 text-white font-poppins gap-2 md:gap-0 font-medium flex flex-col md:flex-row justify-between items-center py-4 px-16 h-fit border-t border-[#1F2937]">
         <h3 className="font-bold cursor-pointer font-inter text-white">
           <span className="text-green-400">&lt;</span>
           Ankit/
           <span className="text-green-400">&gt;</span>
         </h3>
-        <ul className="cursor-pointer flex items-center gap-6  ">
+        <ul className="cursor-pointer hidden md:flex items-center gap-6  ">
           <li className="transition-all duration-300 hover:-translate-y-0.5 ">
             <a href="https://github.com/ankit-verma23">
               <FaGithub size={25} />
@@ -164,9 +187,12 @@ function Footer() {
             </a>
           </li>
         </ul>
-        <p className="font-poppins whitespace-nowrap font-medium tracking-wider text-[10px] text-gray-400">
+        <div className="flex gap-1 items-center">
+          <div className="text-gray-400"><FaRegCopyright size={10} /></div>
+          <p className="font-poppins whitespace-nowrap font-medium tracking-wider text-[10px] text-gray-400">
           2026 Ankit Verma, All rights reserved.
         </p>
+        </div>
       </div>
     </div>
   );

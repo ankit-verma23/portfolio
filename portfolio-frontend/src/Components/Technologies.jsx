@@ -1,13 +1,38 @@
-import React from "react";
-import Skills from "./Skills";
 import { FaServer } from "react-icons/fa";
 import { MdDesktopWindows } from "react-icons/md";
 import { FaDatabase } from "react-icons/fa6";
 import { FaTools } from "react-icons/fa";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Technologies() {
+  useEffect(() => {
+      gsap.fromTo(
+        ".technologies-box",
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+  
+          scrollTrigger: {
+            trigger: ".technologies-section-box",
+            start: "top 75%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    }, []);
   return (
-    <div className="w-full h-fit p-4">
+    <div className="w-full h-fit p-4 technologies-section-box">
       <div className="flex">
         <div className="flex flex-col gap-2 px-4">
           <p className="text-green-400 font-poppins font-semibold tracking-wide">
@@ -18,9 +43,9 @@ function Technologies() {
           </p>
         </div>
       </div>
-      <div className="mt-8 flex justify-between gap-4">
+      <div className="mt-8 flex flex-col md:flex-row justify-between gap-4">
         {/* Backend */}
-        <div className="w-full min-h-60 flex flex-col cursor-pointer transition-all duration-300 hover:-translate-y-2 gap-4 px-6 p-2 bg-[#0F1415] border py-6 border-white/10 rounded-xl ">
+        <div className="technologies-box w-full min-h-60 flex flex-col cursor-pointer gap-4 px-4 md:px-6 p-2 bg-[#0F1415] border py-6 border-white/10 rounded-xl ">
           <div className="flex gap-6 items-center">
             <div className="w-fit h-fit p-3 bg-purple-500/30 text-purple-500 rounded-lg border border-purple-700/50">
               <FaServer size={20} />
@@ -40,7 +65,7 @@ function Technologies() {
           </div>
         </div>
         {/* Frontend */}
-        <div className="w-full min-h-60 flex flex-col cursor-pointer transition-all duration-300 hover:-translate-y-2 gap-4 px-6 p-2 bg-[#0F1415] border py-6 border-white/10 rounded-xl ">
+        <div className="technologies-box w-full min-h-60 flex flex-col cursor-pointer gap-4 px-6 p-2 bg-[#0F1415] border py-6 border-white/10 rounded-xl ">
           <div className="flex gap-6 items-center">
             <div className="w-fit h-fit p-3 bg-blue-500/30 text-blue-500 rounded-lg border border-blue-700/50">
               <MdDesktopWindows size={20} />
@@ -60,7 +85,7 @@ function Technologies() {
           </div>
         </div>
         {/* Database */}
-        <div className="w-full min-h-60 flex flex-col cursor-pointer transition-all duration-300 hover:-translate-y-2 gap-4 px-6 p-2 bg-[#0F1415] border py-6 border-white/10 rounded-xl ">
+        <div className="technologies-box w-full min-h-60 flex flex-col cursor-pointer gap-4 px-6 p-2 bg-[#0F1415] border py-6 border-white/10 rounded-xl ">
           <div className="flex gap-6 items-center">
             <div className="w-fit h-fit p-3 bg-green-500/30 text-green-500 rounded-lg border border-green-700/50">
               <FaDatabase size={20} />
@@ -76,7 +101,7 @@ function Technologies() {
           </div>
         </div>
         {/* Tools */}
-        <div className="w-full min-h-60 flex flex-col cursor-pointer transition-all duration-300 hover:-translate-y-2 gap-4 px-6 p-2 bg-[#0F1415] border py-6 border-white/10 rounded-xl ">
+        <div className="technologies-box w-full min-h-60 flex flex-col cursor-pointer gap-4 px-6 p-2 bg-[#0F1415] border py-6 border-white/10 rounded-xl ">
           <div className="flex gap-6 items-center">
             <div className="w-fit h-fit p-3 bg-cyan-500/30 text-cyan-500 rounded-lg border border-cyan-700/50">
               <FaTools size={20} />
