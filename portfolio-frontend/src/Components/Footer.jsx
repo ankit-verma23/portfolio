@@ -113,7 +113,7 @@ function Footer() {
           </div>
         </div>
         {/* Terminal Card */}
-        <div className="w-full hidden md:inline-block h-fit cursor-pointer ml-4 transition-all duration-300 hover:scale-105 hover:-translate-y-2">
+        <div className="w-full hidden md:hidden lg:inline-block h-fit cursor-pointer ml-4 transition-all duration-300 hover:scale-105 hover:-translate-y-2">
           <div className="w-full max-w-md bg-[#0B0F10] border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,255,170,0.08)]">
             {/* Terminal Header */}
             <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
@@ -155,7 +155,7 @@ function Footer() {
         </div>
       </div>
       {/* footer */}
-      <div className="bg-[#050708] w-full mt-16 text-white font-poppins gap-2 md:gap-0 font-medium flex flex-col md:flex-row justify-between items-center py-4 px-16 h-fit border-t border-[#1F2937]">
+      <div className="bg-[#050708] w-full mt-16 text-white font-poppins gap-2 md:gap-0 font-medium flex flex-col lg:flex-row justify-between items-center py-4 px-16 h-fit border-t border-[#1F2937]">
         <h3 className="font-bold cursor-pointer font-inter text-white">
           <span className="text-green-400">&lt;</span>
           Ankit/
